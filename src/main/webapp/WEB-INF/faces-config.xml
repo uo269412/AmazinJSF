@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_3.xsd"
+	version="2.3">
+
+	<navigation-rule>
+		<from-view-id>/login.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{controller.login}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/index.xhtml</to-view-id>
+		</navigation-case>
+
+		<navigation-case>
+			<from-action>#{controller.login}</from-action>
+			<from-outcome>login-error</from-outcome>
+			<to-view-id>/login.xhtml</to-view-id>
+		</navigation-case>
+
+		<navigation-case>
+			<from-action>#{controller.startAction}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/index.xhtml</to-view-id>
+		</navigation-case>
+
+		<navigation-case>
+			<from-action>#{controller.showRegisterForm}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/register.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/register.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{controller.startAction}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/index.xhtml</to-view-id>
+		</navigation-case>
+
+		<navigation-case>
+			<from-action>#{controller.register}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/index.xhtml</to-view-id>
+		</navigation-case>
+
+		<navigation-case>
+			<from-action>#{controller.register}</from-action>
+			<from-outcome>register-error</from-outcome>
+			<to-view-id>/register.xhtml</to-view-id>
+		</navigation-case>
+
+		<navigation-case>
+			<from-action>#{controller.showLoginForm}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/login.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/index.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{controller.showBooksAction}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/showBooks.xhtml</to-view-id>
+		</navigation-case>
+
+		<navigation-case>
+			<from-action>#{controller.showSpecialOfferAction}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/showSpecialOffer.xhtml</to-view-id>
+		</navigation-case>
+
+		<navigation-case>
+			<from-action>#{controller.startAction}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/index.xhtml</to-view-id>
+		</navigation-case>
+
+		<navigation-case>
+			<from-action>#{controller.logout}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/login.xhtml</to-view-id>
+		</navigation-case>
+
+		<navigation-case>
+			<from-action>#{controller.showInsertBookPage}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/insertBook.xhtml</to-view-id>
+		</navigation-case>
+
+		<navigation-case>
+			<from-action>#{controller.showUpdateBookStockPage}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/updateStock.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/showBooks.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{controller.startAction}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/index.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-action>#{controller.showCart}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/showCart.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-action>#{controller.addBooks}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/addBooks.xhtml</to-view-id>
+		</navigation-case>
+
+		<navigation-case>
+			<from-action>#{controller.startAction}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/index.xhtml</to-view-id>
+		</navigation-case>
+
+		<navigation-case>
+			<from-action>#{controller.logout}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/login.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/addBooks.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{controller.startAction}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/index.xhtml</to-view-id>
+		</navigation-case>
+
+		<navigation-case>
+			<from-action>#{controller.addProcess}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/showCart.xhtml</to-view-id>
+		</navigation-case>
+
+		<navigation-case>
+			<from-action>#{controller.showCart}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/showCart.xhtml</to-view-id>
+		</navigation-case>
+
+		<navigation-case>
+			<from-action>#{controller.logout}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/login.xhtml</to-view-id>
+		</navigation-case>
+
+		<navigation-case>
+			<from-action>#{controller.addBooks}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/addBooks.xhtml</to-view-id>
+		</navigation-case>
+
+		<navigation-case>
+			<from-action>#{controller.startAction}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/index.xhtml</to-view-id>
+		</navigation-case>
+
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/showCart.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{controller.startAction}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/index.xhtml</to-view-id>
+		</navigation-case>
+
+		<navigation-case>
+			<from-action>#{controller.addBooks}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/addBooks.xhtml</to-view-id>
+		</navigation-case>
+
+		<navigation-case>
+			<from-action>#{controller.purchase}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/index.xhtml</to-view-id>
+		</navigation-case>
+
+		<navigation-case>
+			<from-action>#{controller.purchase}</from-action>
+			<from-outcome>purchase-error</from-outcome>
+			<to-view-id>/showCart.xhtml</to-view-id>
+		</navigation-case>
+
+		<navigation-case>
+			<from-action>#{controller.logout}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/login.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/showSpecialOffer.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{controller.startAction}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/index.xhtml</to-view-id>
+		</navigation-case>
+
+		<navigation-case>
+			<from-action>#{controller.logout}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/login.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/updateStock.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{controller.startAction}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/index.xhtml</to-view-id>
+		</navigation-case>
+
+		<navigation-case>
+			<from-action>#{controller.updateStock}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/index.xhtml</to-view-id>
+		</navigation-case>
+
+		<navigation-case>
+			<from-action>#{controller.updateStock}</from-action>
+			<from-outcome>update-error</from-outcome>
+			<to-view-id>/updateStock.xhtml</to-view-id>
+		</navigation-case>
+
+		<navigation-case>
+			<from-action>#{controller.logout}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/login.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+
+	<navigation-rule>
+		<from-view-id>/insertBook.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{controller.startAction}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/index.xhtml</to-view-id>
+		</navigation-case>
+
+		<navigation-case>
+			<from-action>#{controller.insertBook}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/index.xhtml</to-view-id>
+		</navigation-case>
+
+		<navigation-case>
+			<from-action>#{controller.insertBook}</from-action>
+			<from-outcome>insert-error</from-outcome>
+			<to-view-id>/insertBook.xhtml</to-view-id>
+		</navigation-case>
+
+		<navigation-case>
+			<from-action>#{controller.logout}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/login.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<application>
+
+		<locale-config>
+			<default-locale>en</default-locale>
+			<supported-locale>en</supported-locale>
+			<supported-locale>es</supported-locale>
+		</locale-config>
+
+		<resource-bundle>
+			<base-name>messages</base-name>
+			<var>msg</var>
+		</resource-bundle>
+	</application>
+
+
+</faces-config>

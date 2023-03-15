@@ -1,0 +1,78 @@
+
+<!DOCTYPE html >
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+<head>
+<title>Amazin</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+	<header>
+		<h1 class="header">Amazin.com</h1>
+		<h2 class="centered">
+			<h:outputText value="#{msg['welcome']}" />
+		</h2>
+	</header>
+	<nav>
+		<ul>
+			<h:form>
+				<h:outputText value="#{msg['language']}" />
+				<h:selectOneMenu value="#{languageBean.codigoIdioma}"
+					onchange="submit()"
+					valueChangeListener="#{languageBean.doCambioIdiomaConLista}">
+					<f:selectItems value="#{languageBean.listaIdiomas}" />
+				</h:selectOneMenu>
+				<li><h:commandLink value="#{msg['show_cart']}"
+						action="#{controller.showCart}" /></li>
+				<li><h:commandLink value="#{msg['start']}"
+						action="#{controller.startAction}" /></li>
+				<li><h:commandLink value="#{msg['log_out']}" action="#{controller.logout}" /></li>
+			</h:form>
+			<li><h:outputLink value="http://miw.uniovi.es">#{msg['about']}</h:outputLink></li>
+			<li><h:outputLink value="mailto:dd@email.com">#{msg['contact']}</h:outputLink></li>
+		</ul>
+	</nav>
+	<section>
+		<article>
+			<table>
+				<caption>#{msg['our_catalog']}</caption>
+				<thead>
+					<tr>
+						<th>#{msg['selected']}</th>
+						<th>#{msg['title']}</th>
+						<th>#{msg['author']}</th>
+						<th>#{msg['description']}</th>
+						<th>#{msg['price']}</th>
+						<th>#{msg['stock']}</th>
+						<th>#{msg['message']}</th>
+					</tr>
+				</thead>
+				<tbody>
+					<h:form>
+						<ui:repeat value="#{controller.booksAvailableToAdd}" var="book">
+							<tr>
+								<td><h:selectBooleanCheckbox
+										value="#{controller.checkMap[book.title]}" /></td>
+								<td><h:outputText value="#{book.title}" /></td>
+								<td><h:outputText value="#{book.author}" /></td>
+								<td><h:outputText value="#{book.description}" /></td>
+								<td><h:outputText value="#{book.price} &#8364;" /></td>
+								<td><h:outputText value="#{book.stock}" /></td>
+								<td><h:outputText value="#{book.message}" /></td>
+							</tr>
+						</ui:repeat>
+						<h:commandButton value="#{msg['add_book_button']}" action="#{controller.addProcess}" />
+						<h:commandButton value="#{msg['reset_book_marked']}" type="reset" />
+					</h:form>
+				</tbody>
+			</table>
+		</article>
+	</section>
+	<footer>
+		<strong>#{msg['footer1']}</strong><br /> <em>#{msg['footer2']}</em>
+	</footer>
+</body>
+</html>

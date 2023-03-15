@@ -1,0 +1,69 @@
+
+<!DOCTYPE html >
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+<head>
+<title>Amazin</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+	<header>
+		<h1 class="header">Amazin.com</h1>
+		<h2 class="centered">
+			<h:outputText value="#{msg['welcome']}" />
+		</h2>
+	</header>
+	<nav>
+		<ul>
+			<h:form>
+				<h:outputText value="#{msg['language']}" />
+				<h:selectOneMenu value="#{languageBean.codigoIdioma}"
+					onchange="submit()"
+					valueChangeListener="#{languageBean.doCambioIdiomaConLista}">
+					<f:selectItems value="#{languageBean.listaIdiomas}" />
+				</h:selectOneMenu>
+				<li><h:commandLink value="#{msg['add_book_cart']}"
+						action="#{controller.addBooks}" /></li>
+				<li><h:commandLink value="#{msg['start']}"
+						action="#{controller.startAction}" /></li>
+				<li><h:commandLink value="#{msg['log_out']}" action="#{controller.logout}" /></li>
+			</h:form>
+			<li><h:outputLink value="http://miw.uniovi.es">#{msg['about']}</h:outputLink></li>
+			<li><h:outputLink value="mailto:dd@email.com">#{msg['contact']}</h:outputLink></li>
+		</ul>
+	</nav>
+	<section>
+		<article>
+			<table>
+				<caption>#{msg['your_cart']}</caption>
+				<thead>
+					<tr>
+						<th>#{msg['title']}</th>
+						<th>#{msg['stock']}</th>
+					</tr>
+				</thead>
+				<tbody>
+					<ui:repeat
+						value="#{controller.shoopingCart.list.entrySet().toArray()}"
+						var="element">
+						<tr>
+							<td>#{element.key}</td>
+							<td>#{element.value}</td>
+						</tr>
+					</ui:repeat>
+				</tbody>
+			</table>
+			<p>#{msg['total_cost']} #{controller.shoopingCart.totalPrice}</p>
+			<h:form>
+				<h:commandButton value="#{msg['purchase']}" action="#{controller.purchase}" />
+			</h:form>
+		</article>
+	</section>
+	<footer>
+		<strong>#{msg['footer1']}</strong><br /> <em>#{msg['footer2']}</em>
+	</footer>
+</body>
+</html>

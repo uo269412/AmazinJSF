@@ -1,0 +1,67 @@
+
+<!DOCTYPE html >
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+<head>
+<title>Amazin</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+	<header>
+		<h1 class="header">Amazin.com</h1>
+		<h2 class="centered">
+			<h:outputText value="#{msg['welcome']}" />orld!!
+		</h2>
+	</header>
+	<nav>
+		<ul>
+			<h:form>
+				<h:outputText value="#{msg['language']}" />
+				<h:selectOneMenu value="#{languageBean.codigoIdioma}"
+					onchange="submit()"
+					valueChangeListener="#{languageBean.doCambioIdiomaConLista}">
+					<f:selectItems value="#{languageBean.listaIdiomas}" />
+				</h:selectOneMenu>
+				<li><h:commandLink value="#{msg['start']}"
+						action="#{controller.startAction}" /></li>
+				<li><h:commandLink value="#{msg['log_out']}" action="#{controller.logout}" /></li>
+			</h:form>
+			<li><h:outputLink value="http://miw.uniovi.es">#{msg['about']}</h:outputLink></li>
+			<li><h:outputLink value="mailto:dd@email.com">#{msg['contact']}</h:outputLink></li>
+		</ul>
+	</nav>
+	<section>
+		<article>
+			<table>
+				<caption>#{msg['special_offer']}</caption>
+				<thead>
+					<tr>
+						<th>#{msg['title']}</th>
+						<th>#{msg['author']}</th>
+						<th>#{msg['description']}</th>
+						<th>#{msg['price']}</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<ui:repeat value="#{bookManagerServiceHelper.specialOffer}"
+						var="book">
+						<tr>
+							<td>#{book.title}</td>
+							<td>#{book.author}</td>
+							<td>#{book.description}</td>
+							<td>#{book.price} &#8364;</td>
+						</tr>
+					</ui:repeat>
+				</tbody>
+			</table>
+		</article>
+	</section>
+	<footer>
+		<strong>#{msg['footer1']}</strong><br /> <em>#{msg['footer2']}</em>
+	</footer>
+</body>
+</html>

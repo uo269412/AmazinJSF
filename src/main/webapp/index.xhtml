@@ -1,0 +1,64 @@
+<!DOCTYPE html >
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<head>
+<title>Amazin</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+	<header>
+		<h1 class="header">Amazin.com</h1>
+		<h2 class="centered">
+			<h:outputText value="#{msg['welcome']}" />
+		</h2>
+		<h:messages style="color:blue;margin:8px;" />
+
+	</header>
+	<nav>
+		<ul>
+			<h:form>
+				<h:outputText value="#{msg['language']}" />
+				<h:selectOneMenu value="#{languageBean.codigoIdioma}"
+					onchange="submit()"
+					valueChangeListener="#{languageBean.doCambioIdiomaConLista}">
+					<f:selectItems value="#{languageBean.listaIdiomas}" />
+				</h:selectOneMenu>
+				<li><h:commandLink value="#{msg['start']}"
+						action="#{controller.startAction}" /></li>
+				<li><h:commandLink value="#{msg['log_out']}" action="#{controller.logout}" /></li>
+			</h:form>
+			<li><h:outputLink value="http://miw.uniovi.es">#{msg['about']}</h:outputLink></li>
+			<li><h:outputLink value="mailto:dd@email.com">#{msg['contact']}</h:outputLink></li>
+		</ul>
+	</nav>
+	<section>
+		<article id="a01">
+			<label class="mytitle">#{msg['choose']}</label><br />
+			<h:form>
+				<h:commandLink value="#{msg['show_cat']}"
+					action="#{controller.showBooksAction}" />
+				<br />
+				<h:commandLink value="#{msg['show_offer']}"
+					action="#{controller.showSpecialOfferAction}" />
+				<br />
+				<h:commandLink value="#{msg['add_book']}"
+					action="#{controller.showInsertBookPage}"
+					rendered="#{controller.user.admin}" />
+				<br />
+				<h:commandLink value="#{msg['update_book']}"
+					action="#{controller.showUpdateBookStockPage}"
+					rendered="#{controller.user.admin}" />
+				<br />
+			</h:form>
+
+		</article>
+
+
+	</section>
+	<footer>
+		<strong>#{msg['footer1']}</strong><br /> <em>#{msg['footer2']}</em>
+	</footer>
+</body>
+</html>

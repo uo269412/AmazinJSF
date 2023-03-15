@@ -1,0 +1,76 @@
+<!DOCTYPE html >
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+<head>
+<title>Amazin</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+	<header>
+		<h1 class="header">Amazin.com</h1>
+		<h2 class="centered">
+			<h:outputText value="#{msg['welcome']}" />
+		</h2>
+	</header>
+	<nav>
+		<ul>
+			<h:form>
+				<h:outputText value="#{msg['language']}" />
+				<h:selectOneMenu value="#{languageBean.codigoIdioma}"
+					onchange="submit()"
+					valueChangeListener="#{languageBean.doCambioIdiomaConLista}">
+					<f:selectItems value="#{languageBean.listaIdiomas}" />
+				</h:selectOneMenu>
+				<li><h:commandLink value="#{msg['start']}"
+						action="#{controller.startAction}" /></li>
+				<li><h:commandLink value="#{msg['log_out']}" action="#{controller.logout}" /></li>
+			</h:form>
+			<li><h:outputLink value="http://miw.uniovi.es">#{msg['about']}</h:outputLink></li>
+			<li><h:outputLink value="mailto:dd@email.com">#{msg['contact']}</h:outputLink></li>
+		</ul>
+	</nav>
+	<section>
+		<article>
+			<label class="mytitle">#{msg['add_new_back_database']}</label><br />
+			<h:form>
+				<h:messages style="color:red;margin:8px;" />
+				<em>#{msg['title_add']} </em>
+				<h:inputText id="titleAdd" value="#{controller.book.title}"
+					label="titleAdd" required="true">
+				</h:inputText>
+				<br></br>
+				<em>#{msg['description_add']} </em>
+				<h:inputText id="descriptionAdd"
+					value="#{controller.book.description}" label="descriptionAdd"
+					required="true">
+				</h:inputText>
+				<br></br>
+				<em>#{msg['author_add']} </em>
+				<h:inputText id="authorAdd" value="#{controller.book.author}"
+					label="authorAdd">
+				</h:inputText>
+				<br></br>
+				<em>#{msg['tax_group_add']} </em>
+				<h:selectOneMenu id="taxgroupAdd"
+					value="#{controller.book.taxReference}" label="taxgroupAdd">
+					<f:selectItem itemValue="1" itemLabel="1" />
+					<f:selectItem itemValue="2" itemLabel="2" />
+				</h:selectOneMenu>
+				<br></br>
+				<em>#{msg['base_price_add']} </em>
+				<h:inputText id="basePriceAdd" value="#{controller.book.basePrice}"
+					label="basePriceAdd" required="true">
+					<f:validateDoubleRange minimum="1" maximum="50" />
+				</h:inputText>
+				<br></br>
+				<h:commandButton value="#{msg['insert_book_button']}" action="#{controller.insertBook}" />
+			</h:form>
+		</article>
+	</section>
+	<footer>
+		<strong>#{msg['footer1']}</strong><br /> <em>#{msg['footer2']}</em>
+	</footer>
+</body>
+</html>

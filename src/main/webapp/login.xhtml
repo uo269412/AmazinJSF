@@ -1,0 +1,63 @@
+<!DOCTYPE html >
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+<head>
+<title>Amazin</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+	<header>
+		<h1 class="header">Amazin.com</h1>
+		<h2 class="centered">
+			<h:outputText value="#{msg['welcome']}" />
+		</h2>
+	</header>
+	<nav>
+		<ul>
+			<h:form>
+				<h:outputText value="#{msg['language']}" />
+				<h:selectOneMenu value="#{languageBean.codigoIdioma}"
+					onchange="submit()"
+					valueChangeListener="#{languageBean.doCambioIdiomaConLista}">
+					<f:selectItems value="#{languageBean.listaIdiomas}" />
+				</h:selectOneMenu>
+				<li><h:commandLink value="#{msg['register']}"
+						action="#{controller.showRegisterForm}" /></li>
+			</h:form>
+			<li><a href="#">Start</a></li>
+			<li><h:outputLink value="http://miw.uniovi.es">#{msg['about']}</h:outputLink></li>
+			<li><h:outputLink value="mailto:dd@email.com">#{msg['contact']}</h:outputLink></li>
+
+		</ul>
+	</nav>
+	<section>
+		<article>
+			<label class="mytitle">#{msg['introduce_login']}</label><br />
+			<h:form>
+				<h:messages style="color:red;margin:8px;" />
+				<em>#{msg['login_user']} </em>
+				<h:inputText id="loginInput" value="#{controller.loginInfo.login}"
+					label="loginLogin" required="true">
+					<f:validateLength minimum="5" maximum="8" />
+					<f:valueChangeListener
+						type="com.miw.presentation.listeners.LoginFieldListener" />
+				</h:inputText>
+				<br></br>
+				<em>#{msg['password_user']} </em>
+				<h:inputSecret id="passwordInput"
+					value="#{controller.loginInfo.password}" label="passwordLogin"
+					required="true">
+				</h:inputSecret>
+				<br></br>
+				<h:commandButton value="#{msg['login']}"
+					action="#{controller.login}" />
+			</h:form>
+		</article>
+	</section>
+	<footer>
+		<strong>#{msg['footer1']}</strong><br /> <em>#{msg['footer2']}</em>
+	</footer>
+</body>
+</html>
